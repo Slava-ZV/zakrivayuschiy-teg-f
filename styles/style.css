@@ -1,20 +1,365 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ theme-dark — класс тёмной темы
-✦ theme-light — класс светлой темы
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
-
-*/
 
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font, 'Inter-Variable'), sans-serif;
+  font-variation-settings: 'wght' var(--main-font-weight, 400);
+  background-image: var(--background-image);
+  background-size: cover;
+  background-attachment: fixed;
+  padding-block-start: 100px;
+  color: var(--font-color);
+}
+
+.header {
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  font-family: var(--accent-font, 'PressStart2P'), fantasy;
+  background-color: var(--background-color);
+  border: var(--main-color) 2px solid;
+  text-transform: uppercase;
+}
+
+.header_title {
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  margin-block-start: 135px;
+}
+
+.header_subtitle {
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  line-height: 23px;
+  padding-block-start: 20px;
+}
+
+.theme-menu__button {
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.theme-menu__button:focus {
+  outline: none;
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus-visible:after {
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 0;
+  display: block;
+  animation: underline 1s;
+  height: 2px;
+  background: var(--font-color);
+}
+
+.theme-menu__button:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: none;
+}
+
+.theme-menu__button:hover {
+  opacity: 0.6;
+}
+
+.theme-menu__list {
+  display: grid;
+  gap: 11px;
+  padding: 25px 0 24px 19px;
+}
+
+.theme-menu__button:disabled::before {
+  content: "▶";
+  position: absolute;
+  inset-inline-start: -15px;
+  animation: 2s infinite arrow steps(1);
+  
+}
+
+.main {
+  display: grid;
+  justify-items: center;
+  padding-block-start: 99px;
+  font-family: var(--main-font, Inter-Variable), sans-serif;
+}
+
+.card_list {
+  display: grid;
+  gap: 50px;
+}
+.card_item {
+  max-width: 700px;
+  border: 2px solid var(--main-color);
+  background: var(--background-color);
+  position: relative;
+}
+
+.image_card {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+  z-index: 0;
+  min-height: clamp(23.25rem, 16.032rem + 30.798vw, 43.75rem);
+}
+
+.image_saturate {
+  filter: saturate(158%);
+}
+
+.image_hue-rotate {
+  filter: hue-rotate(-30deg) brightness(120%);
+}
+
+.image_sepia {
+  filter: sepia(60%);
+}
+
+.image_grayscale {
+  filter: grayscale(0.8);
+}
+
+.image_invert {
+  object-position: left;
+  filter: invert(0.3);
+}
+
+.image_opacity {
+  filter: opacity(0.8);
+}
+
+.image_blur {
+  object-position: right;
+  filter: blur(2px);
+}
+
+.card_header {
+  font-size: 18px;
+  font-variation-settings: 'wght' var(--accent-font-weight, 700);
+  padding: 4px 10px;
+  border-bottom: 2px solid var(--main-color);
+}
+
+.card_discription {
+  padding: 25px;
+  border-top: 2px solid var(--main-color);
+}
+
+.card_discription_text {
+  font-size: 18px;
+  line-height: 21px;
+  padding-bottom: 26px;
+}
+
+.button-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card__like-button {
+  max-height: 38px;
+  min-width: 130px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--main-color);
+  position: relative;
+}
+
+.card_button:focus {
+  outline: none;
+}
+
+.card_button:focus-visible {
+ box-shadow: 2px 2px 0 0 var(--font-color);
+}
+
+.card_button:hover {
+  cursor: pointer;
+}
+
+.card_button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--font-color);
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.card_button:hover::before {
+  transform: scaleX(1);
+}
+
+.card__icon-button {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid transparent;
+  color: var(--main-color);
+  transition: border 0.3s ease;
+  cursor: pointer;
+  block-size: 36px;
+  inline-size: 39px;
+  margin-right: 6px;
+  padding: 0;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid var(--main-color);
+}
+
+.button__text {
+  font-family: var(--accent-font, 'PressStart2P-Regular'), fantasy;
+  font-size: 14px;
+  position: relative;
+  z-index: 1;
+  color: var(--button-text-color);
+  mix-blend-mode: difference;
+}
+
+.watermark {
+  position: absolute;
+  mix-blend-mode: hard-light;
+  font-family: var(--accent-font,'PressStart2P-Regular'), fantasy;
+  font-size: 14px;
+  text-shadow: 0 0 1px var(--background-color);
+  font-variation-settings: 'wght' var(--accent-font-weight, 700);
+  right: 25px;
+  top: 57px;
+  z-index: 1;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.card__save-button {
+  margin-block-start: 48px;
+  min-width: 340px;
+  min-height: 55px;
+  border: 2px solid var(--font-color);
+  background-color: var(--background-color);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 103px;
+}
+
+.floppy {
+  color: var(--button-text-color);
+  inline-size: 22px;
+  block-size: 22px;
+  mix-blend-mode: difference;
+}
+
+.modal-window {
+  max-width: 355px;
+  background: var(--background-color);
+  text-transform: uppercase;
+  border: 2px solid var(--font-color);
+  padding: 30px 30px;
+  color: var(--text-color);
+}
+
+.modal-window[open] {
+  display: grid;
+  grid-template-rows: repeat(2, min-content);
+  gap: 30px;
+}
+
+.modal-window::backdrop {
+  background: #000;
+  opacity: 0.75;
+}
+
+.modal-content {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+  line-height: 1.5;
+}
+
+.floppy-modal {
+  flex-shrink: 0;
+  block-size: 39px;
+  inline-size: 39px;
+  color: var(--button-text-color);
+  mix-blend-mode: difference;
+}
+
+.modal-button-submit {
+  background-color: var(--background-color);
+  inline-size: 100%;
+  border: 2px solid var(--font-color);
+  position: relative;
+  min-height: 38px;
+  text-transform: uppercase;
+}
+
+@media (width <= 375px) {
+  .header_title {
+    margin-block-start: 120px;
+  }
+  .header_subtitle {
+    padding-block-start: 15px;
+  }
+
+  .theme-menu__list {
+    padding: 20px 0 24px 19px;
+  }
+
+  .card__save-button {
+    flex-direction: column;
+    width: 306px;
+    min-width: auto;
+    min-height: 84px;
+  }
+
+  .floppy {
+    inline-size: 28px;
+    block-size: 28px;
+  }
+
+  .modal-window {
+    max-width: 341px;
+    padding: 30px 42px;
+  }
+
+  .watermark {
+    right: 11px;
+    top: 56px;
+  }
+  .watermark_start {
+    top: 77px;
+  }
+
+}
+
+@supports (
+  (-webkit-text-stroke: 1px var(--background-color)) or
+    (text-stroke: 1px var(--background-color))
+) {
+  .watermark {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--background-color);
+    text-stroke: 1px var(--background-color);
+}
 }
