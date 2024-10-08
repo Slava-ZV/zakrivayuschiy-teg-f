@@ -1,1 +1,1 @@
-https://github.com/Slava-ZV/slozhno-sosredotochitsya.git
+https://github.com/Slava-ZV/zakrivayuschiy-teg-f
