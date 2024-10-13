@@ -12,24 +12,12 @@
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
-@keyframes arrow {
-  from {
-    margin-left: 0px;
-    }
-  50% {
-    margin-left: -4px;
-    }
-  to {
-    margin-left: 0px;
+@keyframes header_arrow-swing {
+  0% {
+    transform: translateX(0);
   }
-}
-
-@keyframes underline {
-  from {
-      width: 0%;
-  }
-  to {
-      width: 100%;
+  100% {
+    transform: translateX(4px);
   }
 }
   
