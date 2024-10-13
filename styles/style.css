@@ -227,7 +227,6 @@
 }
 
 .button__text {
-  font-family: var(--accent-font, 'PressStart2P-Regular'), fantasy;
   font-size: 14px;
   position: relative;
   z-index: 1;
@@ -238,7 +237,6 @@
 .watermark {
   position: absolute;
   mix-blend-mode: hard-light;
-  font-family: var(--accent-font,'PressStart2P-Regular'), fantasy;
   font-size: 14px;
   text-shadow: 0 0 1px var(--background-color);
   font-variation-settings: 'wght' var(--accent-font-weight, 700);
