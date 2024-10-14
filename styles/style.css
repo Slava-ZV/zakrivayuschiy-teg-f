@@ -76,7 +76,7 @@
 
 .theme-menu__list {
   display: grid;
-  gap: 11px;
+  gap: 10px;
   padding: 25px 0 24px 19px;
 }
 
@@ -103,6 +103,10 @@
   max-width: 700px;
   border: 2px solid var(--main-color);
   background: var(--background-color);
+  position: relative;
+}
+
+.tegs {
   position: relative;
 }
 
@@ -243,12 +247,12 @@
 .watermark {
   position: absolute;
   mix-blend-mode: hard-light;
-  font-family: var(--accent-font, 'PressStart2P-Regular'), PressStart2P;
+  font-family: var(--accent-font, 'PressStart2P'), PressStart2P;
   font-size: 14px;
   text-shadow: 0 0 1px var(--background-color);
   font-variation-settings: 'wght' var(--accent-font-weight, 700);
   right: 25px;
-  top: 57px;
+  top: 25px;
   z-index: 1;
   text-transform: uppercase;
   opacity: 0.5;
@@ -351,7 +355,7 @@
 
   .watermark {
     right: 11px;
-    top: 56px;
+    top: 22px;
   }
 
   .watermark_start {
